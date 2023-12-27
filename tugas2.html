@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistem Informasi Barang</title>
+ <style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+   
+  }
+
+  #sidebar {
+    background-color: #333;
+    color: #fff;
+    width: 200px;
+    padding: 20px;
+    box-sizing: border-box;
+    margin-right: 20px; 
+  }
+
+  #container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+    overflow: auto;
+    background: url("../pemandangan-gunung-bromo-alam-indonesia.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  h1, h2 {
+    text-align: center;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+  }
+
+  li {
+    margin-bottom: 30px; 
+  }
+
+  a {
+    text-decoration: none;
+    color: #fff;
+    display: block; 
+    margin-bottom: 10px; 
+  }
+
+  a:hover {
+    color: #ccc;
+  }
+
+  #transaksiTable tbody tr td {
+  color: #fff;
+  }
+
+
+ label {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    max-width: 200px; 
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  table, th, td {
+    border: 1px solid #ddd;
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+ </style>
+</head>
+<body>
+  <div id="sidebar">
+    <h3>Menu</h3>
+    <ul>
+      <a href="tugas1.html">data barang</a>
+      <a href="tugas2.html">data transaksi</a>
+      <a href="tugas3.html">data pelanggan</a>
+    </ul>
+  </div>
+
+  <div id="container">
+    <h1>Sistem Informasi Barang</h1>
+    <h2>Data Transaksi</h2>
+    <form id="transaksiForm">
+      <label for="nomorFaktur">Nomor Faktur:</label>
+      <input type="text" id="nomorFaktur" name="nomorFaktur" maxlength="20" required>
+
+      <label for="kodeBarang">Kode Barang:</label>
+      <input type="text" id="kodeBarang" name="kodeBarang" maxlength="10" required>
+
+      <label for="hargaJual">Harga Jual:</label>
+      <input type="text" id="hargaJual" name="hargaJual" maxlength="10" required>
+
+      <label for="jumlahJual">Jumlah Jual:</label>
+      <input type="text" id="jumlahJual" name="jumlahJual" maxlength="5" required>
+
+      <button type="button" onclick="processTransaksi()">Proses</button>
+    </form>
+
+    <table id="transaksiTable">
+      <thead>
+        <tr>
+          <th>Nomor Faktur</th>
+          <th>Kode Barang</th>
+          <th>Harga Jual</th>
+          <th>Jumlah Jual</th>
+          <th>Diskon</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="transaksiBody"></tbody>
+    </table>
+  </div>
+  <script>
+    function processTransaksi() {
+    var nomorFaktur = document.getElementById('nomorFaktur').value;
+    var kodeBarang = document.getElementById('kodeBarang').value;
+    var hargaJual = parseFloat(document.getElementById('hargaJual').value);
+    var jumlahJual = parseFloat(document.getElementById('jumlahJual').value);
+
+   
+    var total = hargaJual * jumlahJual;
+
+    var diskon = 0;
+    var diskonPersen = 0;
+
+    if ((kodeBarang === 'B01' || kodeBarang === 'B02') && jumlahJual > 10) {
+      diskon = 0.05 * total;
+      diskonPersen = 5;
+    }
+
+    total -= diskon;
+
+    var transaksiTable = document.getElementById('transaksiTable');
+    var transaksiBody = document.getElementById('transaksiBody');
+
+    var newRow = transaksiBody.insertRow();
+    var cell1 = newRow.insertCell(0);
+    var cell2 = newRow.insertCell(1);
+    var cell3 = newRow.insertCell(2);
+    var cell4 = newRow.insertCell(3);
+    var cell5 = newRow.insertCell(4); 
+    var cell6 = newRow.insertCell(5);
+
+    cell1.innerHTML = nomorFaktur;
+    cell2.innerHTML = kodeBarang;
+    cell3.innerHTML = hargaJual.toFixed(2); 
+    cell4.innerHTML = jumlahJual;
+
+    var diskonElement = document.createElement('span');
+    diskonElement.innerHTML = diskon.toFixed(2) + ' (' + diskonPersen + '%)';
+    cell5.appendChild(diskonElement);
+
+    var totalElement = document.createElement('span');
+    totalElement.innerHTML = total.toFixed(2);
+    cell6.appendChild(totalElement);
+
+    cell1.style.color = '#fff';
+    cell2.style.color = '#fff';
+    cell3.style.color = '#fff';
+    cell4.style.color = '#fff';
+    cell5.style.color = '#fff';
+    cell6.style.color = '#fff';
+
+    document.getElementById('nomorFaktur').value = '';
+    document.getElementById('kodeBarang').value = '';
+    document.getElementById('hargaJual').value = '';
+    document.getElementById('jumlahJual').value = '';
+  }
+  </script>
+</body>
+</html>
