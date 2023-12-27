@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistem Informasi Barang</title>
+  <link rel="stylesheet" href="../diel/CSS/tugas2.css">
+</head>
+<body>
+  <div id="sidebar">
+    <h3>Menu</h3>
+    <ul>
+      <a href="tugas1.html">data barang</a>
+      <a href="tugas2.html">data transaksi</a>
+      <a href="tugas3.html">data pelanggan</a>
+    </ul>
+  </div>
+
+  <div id="container">
+    <h1>Sistem Informasi Barang</h1>
+    <h2>Data Transaksi</h2>
+    <form id="transaksiForm">
+      <label for="nomorFaktur">Nomor Faktur:</label>
+      <input type="text" id="nomorFaktur" name="nomorFaktur" maxlength="20" required>
+
+      <label for="kodeBarang">Kode Barang:</label>
+      <input type="text" id="kodeBarang" name="kodeBarang" maxlength="10" required>
+
+      <label for="hargaJual">Harga Jual:</label>
+      <input type="text" id="hargaJual" name="hargaJual" maxlength="10" required>
+
+      <label for="jumlahJual">Jumlah Jual:</label>
+      <input type="text" id="jumlahJual" name="jumlahJual" maxlength="5" required>
+
+      <button type="button" onclick="processTransaksi()">Proses</button>
+    </form>
+
+    <table id="transaksiTable">
+      <thead>
+        <tr>
+          <th>Nomor Faktur</th>
+          <th>Kode Barang</th>
+          <th>Harga Jual</th>
+          <th>Jumlah Jual</th>
+          <th>Diskon</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="transaksiBody"></tbody>
+    </table>
+  </div>
+  <script src="../JS/tugas2.js"></script>
+</body>
+</html>
