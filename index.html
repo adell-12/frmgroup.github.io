@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistem Informasi barang</title>
+  <link rel="stylesheet" href="../diel/CSS/tugas1.css">
+</head>
+<body>
+  <div id="sidebar">
+    <h3>Menu</h3>
+    <ul>
+      <a href="tugas1.html">data barang</a>
+      <a href="tugas2.html">data transaksi</a>
+      <a href="tugas3.html">data pelanggan</a>
+    </ul>
+  </div>
+
+  <div id="container">
+    <h1>Sistem Informasi Barang</h1>
+    <h2>data barang</h2>
+    
+    
+    <label for="kodeBarang">Kode Barang:</label>
+    <input type="text" id="kodeBarang" placeholder="Kode Barang">
+
+    <label for="namaBarang">Nama Barang:</label>
+    <input type="text" id="namaBarang" placeholder="Nama Barang">
+
+    <label for="hargaBarang">Harga Barang:</label>
+    <input type="text" id="hargaBarang" placeholder="Harga Barang">
+
+    <label for="satuan">Satuan:</label>
+    <select id="satuan">
+      <option value="pcs">PCS</option>
+      <option value="kg">KG</option>
+      <option value="m">bungkus</option>
+    </select>
+
+    <br>
+
+    <button onclick="processBarang()">Proses</button>
+
+    <table id="barangTable">
+      <thead>
+        <tr>
+          <th>Kode Barang</th>
+          <th>Nama Barang</th>
+          <th>Harga Barang</th>
+          <th>Satuan</th>
+        </tr>
+      </thead>
+      <tbody id="barangBody"></tbody>
+    </table>
+  </div>
+  <script src="../JS/tugas1.js"></script>
+</body>
+</html>
