@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistem Informasi Pelanggan</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      height: 100vh;
+    }
+
+    #sidebar {
+      background-color: #000; 
+      color: #fff;
+      width: 200px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    #sidebar h3 {
+      margin-bottom: 20px;
+    }
+
+    #sidebar ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    #sidebar ul li {
+      margin-bottom: 10px;
+    }
+
+    #sidebar ul li a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    #container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      flex-grow: 1;
+      overflow: auto;
+      background: url("../diel/CSS/pemandangan-gunung-bromo-alam-indonesia.jpg") no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+    
+
+    h2, h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    
+    label {
+      display: block;
+      margin: 10px 0;
+      color: #333;
+    }
+
+    input {
+      width: 80%;
+      max-width: 300px;
+      padding: 8px;
+      margin: 5px 0;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 80%;
+      max-width: 300px;
+      margin: 10px 0;
+      box-sizing: border-box;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #pelangganTable {
+      width: 80%;
+      max-width: 600px;
+      margin: 20px 0;
+      border-collapse: collapse;
+    }
+
+    #pelangganTable th, #pelangganTable td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+    }
+
+    #pelangganTable th {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    #pelangganTable tbody tr td {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div id="sidebar">
+    <h3>Menu</h3>
+    <ul>
+      <a href="tugas1.html">data barang</a>
+      <a href="tugas2.html">data transaksi</a>
+      <a href="tugas3.html">data pelanggan</a>
+    </ul>
+  </div>
+
+  <div id="container">
+    <h2>Sistem Informasi Barang</h2>
+    <h1>Data Pelanggan</h1>
+    
+    <label for="kodePelanggan">Kode Pelanggan:</label>
+    <input type="text" id="kodePelanggan" placeholder="Kode Pelanggan">
+
+    <label for="namaPelanggan">Nama Pelanggan:</label>
+    <input type="text" id="namaPelanggan" placeholder="Nama Pelanggan">
+
+    <label for="noTelpon">Nomor Telpon:</label>
+    <input type="text" id="noTelpon" placeholder="Nomor Telpon">
+
+    <br>
+
+    <button onclick="processPelanggan()">Proses</button>
+
+    <table id="pelangganTable">
+      <thead>
+        <tr>
+          <th>Kode Pelanggan</th>
+          <th>Nama Pelanggan</th>
+          <th>Nomor Telpon</th>
+        </tr>
+      </thead>
+      <tbody id="pelangganBody"></tbody>
+    </table>
+  </div>
+
+  <script>
+    function processPelanggan() {
+      var kodePelanggan = document.getElementById('kodePelanggan').value;
+      var namaPelanggan = document.getElementById('namaPelanggan').value;
+      var noTelpon = document.getElementById('noTelpon').value;
+
+      var pelangganTable = document.getElementById('pelangganTable');
+      var pelangganBody = document.getElementById('pelangganBody');
+
+      var newRow = pelangganBody.insertRow();
+      var cell1 = newRow.insertCell(0);
+      var cell2 = newRow.insertCell(1);
+      var cell3 = newRow.insertCell(2);
+
+      cell1.innerHTML = kodePelanggan;
+      cell2.innerHTML = namaPelanggan;
+      cell3.innerHTML = noTelpon;
+
+      cell1.style.color = '#333';
+      cell2.style.color = '#333';
+      cell3.style.color = '#333';
+
+      document.getElementById('kodePelanggan').value = '';
+      document.getElementById('namaPelanggan').value = '';
+      document.getElementById('noTelpon').value = '';
+    }
+  </script>
+</body>
+</html>
